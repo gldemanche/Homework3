@@ -67,6 +67,68 @@ public class ShowExamples
 	}
 
 	@Test
+	public void equals_allEmpty(){
+		ShowSummary emptylist1 = new ShowSummary(new LinkedList<Show>(), new LinkedList<Show>(), new LinkedList<Show>());
+		ShowSummary emptylist2 = new ShowSummary(new LinkedList<Show>(), new LinkedList<Show>(), new LinkedList<Show>());
+
+		assertTrue(emptylist1.equals(emptylist2));
+
+	}
+
+	@Test
+	public void equals_differentTitles(){
+		ShowSummary report2 = new ShowSummary();
+
+		Show startrek2 = new Show("Star Trekkkk", 1800, 60.0, true);
+		Show futurama2 = new Show("Futurama", 1900, 20.0, false);
+		Show animaniacs2 = new Show("Animaniacs", 1630, 9.0, true);
+		Show sesamestreet2 = new Show("Sesame Street", 900, 55.0, false);
+
+		report2.primetime.add(startrek2);
+		report2.primetime.add(futurama2);
+		report2.daytime.add(animaniacs2);
+		report2.daytime.add(sesamestreet2);
+
+		assertFalse(report1.equals(report2));
+	}
+
+	@Test
+	public void equals_differentTimes(){
+		ShowSummary report2 = new ShowSummary();
+
+		Show startrek2 = new Show("Star Trek", 1700, 60.0, true);
+		Show futurama2 = new Show("Futurama", 1900, 20.0, false);
+		Show animaniacs2 = new Show("Animaniacs", 1630, 9.0, true);
+		Show sesamestreet2 = new Show("Sesame Street", 900, 55.0, false);
+
+		report2.primetime.add(startrek2);
+		report2.primetime.add(futurama2);
+		report2.daytime.add(animaniacs2);
+		report2.daytime.add(sesamestreet2);
+
+		assertFalse(report1.equals(report2));
+	}
+
+	@Test
+	public void equals_differentLengths(){
+		ShowSummary report2 = new ShowSummary();
+
+		Show startrek2 = new Show("Star Trek", 1800, 60.0, true);
+		Show futurama2 = new Show("Futurama", 1900, 20.0, false);
+		Show animaniacs2 = new Show("Animaniacs", 1630, 9.0, true);
+		Show sesamestreet2 = new Show("Sesame Street", 900, 55.0, false);
+		Show sesamestreet3 = new Show("Sesame Street", 900, 55.0, false);
+
+		report2.primetime.add(startrek2);
+		report2.primetime.add(futurama2);
+		report2.daytime.add(animaniacs2);
+		report2.daytime.add(sesamestreet2);
+		report2.latenight.add(sesamestreet3);
+
+		assertFalse(report1.equals(report2));
+	}
+
+	@Test
 	public void instructorTestShowSummary_SameInstances() {
 		ShowSummary report2 = report1;
 		assertTrue(report1.equals(report2));
