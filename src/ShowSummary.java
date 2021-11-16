@@ -1,6 +1,10 @@
 import java.util.LinkedList;
 import java.util.Objects;
 
+/**
+ * show summary file
+ * @author Gabe Demanche & Chris Chow
+ */
 class ShowSummary {
 	
 	LinkedList<Show> daytime;
@@ -23,10 +27,9 @@ class ShowSummary {
 
 	public boolean equals(Object obj){
 		ShowSummary otherShow = (ShowSummary) obj;
+
 		int count;
 		int count2 =0;
-
-
 		if(this.daytime.size() == otherShow.daytime.size() && this.primetime.size() == otherShow.primetime.size() && this.latenight.size() == otherShow.latenight.size()){
 			if(this.daytime.isEmpty())
 				count2++;
@@ -58,7 +61,7 @@ class ShowSummary {
 				if(Objects.equals(this.latenight.get(i).title, otherShow.latenight.get(i).title) && this.latenight.get(i).broadcastTime == otherShow.latenight.get(i).broadcastTime){
 					count++;
 				}
-				if(count == this.primetime.size())
+				if(count == this.latenight.size())
 					count2++;
 			}
 		}
